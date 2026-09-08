@@ -9,13 +9,11 @@ Thank you for your interest in contributing to `example-dns`!
 1. **Repository Mirrors**:
    - GitHub: [https://github.com/example-dns/example-dns](https://github.com/example-dns/example-dns)
    - Codeberg: [https://codeberg.org/example-dns/example-dns](https://codeberg.org/example-dns/example-dns)
-2. Review the [Architecture Documentation](docs/architecture.md) to understand how the applications and nameservers interact.
+2. Review the [Architecture Documentation](docs/architecture.md) to understand how the system is organized.
 
 ## Monorepo Workflow
 
-- Changes to the web UI and management API should be scoped within `apps/web/`.
-- Changes to the primary nameserver belong in `apps/nameserver-primary/`.
-- Changes to the secondary nameserver belong in `apps/nameserver-secondary/`.
+- Changes to the web UI and landing page should be scoped within `apps/web/`.
 - Infrastructure and deployment configurations belong in `infra/`.
 
 ## Pull Request Guidelines

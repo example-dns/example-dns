@@ -19,9 +19,9 @@ See [Repository Mirrors](docs/mirrors.md) for local git configuration.
 
 | Domain | Role / Service | Description | Path |
 | --- | --- | --- | --- |
-| **`example-dns.com`** | Web Interface & API | Management dashboard and public API | [`apps/web`](apps/web) |
-| **`example-dns.net`** | Primary Nameserver | Authoritative master nameserver | [`apps/nameserver-primary`](apps/nameserver-primary) |
-| **`example-dns.org`** | Secondary Nameserver | Authoritative slave / fallback nameserver | [`apps/nameserver-secondary`](apps/nameserver-secondary) |
+| **`example-dns.com`** | Web Interface & Landing Page | Management dashboard, public landing page, and API | [`apps/web`](apps/web) |
+| **`example-dns.net`** | Primary Nameserver | Authoritative master nameserver | `infra/` / External node |
+| **`example-dns.org`** | Secondary Nameserver | Authoritative slave / fallback nameserver | `infra/` / External node |
 
 ---
 
@@ -30,9 +30,7 @@ See [Repository Mirrors](docs/mirrors.md) for local git configuration.
 ```
 .
 ├── apps/
-│   ├── web/                     # example-dns.com web application & dashboard
-│   ├── nameserver-primary/      # example-dns.net authoritative primary nameserver
-│   └── nameserver-secondary/    # example-dns.org authoritative secondary nameserver
+│   └── web/                     # example-dns.com PHP landing page & web app
 ├── infra/                       # Infrastructure, Docker, and deployment manifests
 ├── docs/                        # Architecture and ecosystem documentation
 ├── CONTRIBUTING.md              # Contribution guidelines
