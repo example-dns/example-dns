@@ -1,0 +1,2 @@
+The entire example-dns sourcecode is open-source and free to use (commercial use requires credeting this Project)
+example-dns is a Project by ternis.org(by ternis.dev and ternis.net)
