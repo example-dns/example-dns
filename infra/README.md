@@ -18,7 +18,7 @@ The DNS network is powered by **PowerDNS Authoritative Server**:
 
 ## Running the Stack with Docker Compose
 
-To spin up both PowerDNS authoritative nameservers and the static HTML web landing page:
+To spin up both PowerDNS authoritative nameservers and the PHP web landing page:
 
 ```bash
 docker compose up -d
@@ -30,7 +30,7 @@ docker compose up -d
 | --- | --- | --- | --- |
 | `powerdns-primary` | `example-dns-primary` | `53:53` (UDP/TCP), `8081:8081` (API) | Primary Nameserver (`example-dns.net`) |
 | `powerdns-secondary` | `example-dns-secondary` | `5353:53` (UDP/TCP) | Secondary Nameserver (`example-dns.org`) |
-| `web` | `example-dns-web` | `8080:80` | Web landing page (`example-dns.com`) |
+| `web` | `example-dns-web` | `8080:8080` | Web landing page (`example-dns.com`) |
 
 ## Querying the DNS Servers
 

@@ -33,13 +33,20 @@ services:
       - example-dns-net
 
   web:
-    image: nginx:alpine
+    image: php:8.4-cli-alpine
     container_name: example-dns-web
     restart: unless-stopped
+    working_dir: /app
     volumes:
-      - ../apps/web:/usr/share/nginx/html:ro
+      - ../apps/web:/app
+    command: ["php", "-S", "0.0.0.0:8080", "-t", "/app"]
     ports:
-      - "8080:80"
+      - "8080:8080"
+    environment:
+      - PDNS_API_URL=http://powerdns-primary:8081
+      - PDNS_API_KEY=example-dns-secret-api-key
+    depends_on:
+      - powerdns-primary
     networks:
       - example-dns-net
 
