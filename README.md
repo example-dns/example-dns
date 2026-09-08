@@ -1,14 +1,27 @@
 # example-dns
 
-`example-dns` is the monorepo hosting the entire open-source DNS service and infrastructure project by [ternis.org](https://ternis.org) (by [ternis.dev](https://ternis.dev) and [ternis.net](https://ternis.net)).
+`example-dns` is the official monorepo hosting the entire open-source DNS service and infrastructure project by [ternis.org](https://ternis.org) (by [ternis.dev](https://ternis.dev) and [ternis.net](https://ternis.net)).
+
+## Repositories & Mirrors
+
+This project is mirrored across the following platforms:
+
+- **GitHub**: [https://github.com/example-dns/example-dns](https://github.com/example-dns/example-dns)
+- **Codeberg**: [https://codeberg.org/example-dns/example-dns](https://codeberg.org/example-dns/example-dns)
 
 ## Domains & Infrastructure
 
-| Domain | Role / Service |
-| --- | --- |
-| **example-dns.com** | Website / Interface |
-| **example-dns.net** | Primary Nameserver |
-| **example-dns.org** | Secondary Nameserver |
+The monorepo encompasses services and configurations across the following domains:
+
+| Domain | Role / Service | Description |
+| --- | --- | --- |
+| **example-dns.com** | Website / Interface | Main web portal and user management interface |
+| **example-dns.net** | Primary Nameserver | Authoritative primary DNS service |
+| **example-dns.org** | Secondary Nameserver | Authoritative secondary / fallback DNS service |
+
+## Monorepo Information
+
+This repository serves as the central monorepo containing all components, services, documentation, and infrastructure for the `example-dns` ecosystem.
 
 ## License
 

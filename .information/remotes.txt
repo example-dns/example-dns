@@ -1,0 +1,2 @@
+- GitHub: https://github.com/example-dns/example-dns
+- Codeberg: https://codeberg.org/example-dns/example-dns
