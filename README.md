@@ -1,6 +1,6 @@
 # example-dns
 
-`example-dns` is an open-source DNS service and infrastructure project by [ternis.org](https://ternis.org) (by [ternis.dev](https://ternis.dev) and [ternis.net](https://ternis.net)).
+`example-dns` is the monorepo hosting the entire open-source DNS service and infrastructure project by [ternis.org](https://ternis.org) (by [ternis.dev](https://ternis.dev) and [ternis.net](https://ternis.net)).
 
 ## Domains & Infrastructure
 
