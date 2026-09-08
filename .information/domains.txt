@@ -1,3 +1,0 @@
-- example-dns.com: Website/interface
-- example-dns.net: Primary Nameserver
-- example-dns.org: Secondary Nameserver
