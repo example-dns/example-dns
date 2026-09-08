@@ -1,25 +1,23 @@
 # example-dns Web Interface (`example-dns.com`)
 
-This directory houses the frontend web landing page, user portal, and interface for `example-dns.com`.
+This directory houses the static HTML landing page and public interface for `example-dns.com`.
 
 ## Features
 
-- Lightweight, pure PHP implementation (no npm or Node.js dependencies)
-- Internationalization support: English (`en`) and German (`de`)
-- Auto-detection of browser language with manual toggle (`?locale=en`, `?locale=de`)
-- Dynamic legal imprint link pointing to `https://ternis.dev/{locale}/legal/imprint`
-- Modern, responsive dark-mode styling
+- **HTML only**: Zero dependencies, no runtime (no PHP, Node.js, or npm required)
+- Multi-language support:
+  - English: [`index.html`](index.html)
+  - German: [`de.html`](de.html)
+- Direct legal imprint integration:
+  - English: `https://ternis.dev/en/legal/imprint`
+  - German: `https://ternis.dev/de/legal/imprint`
+- Lightweight, modern, responsive CSS in [`assets/css/style.css`](assets/css/style.css)
 
-## Local Development
+## Local Preview
 
-Run with the PHP built-in web server:
+Open [`index.html`](index.html) directly in any web browser, or serve with any static web server (e.g. Python, Caddy, Nginx):
 
 ```bash
-# From apps/web/ directory
-php -S localhost:8080
-
-# Or from repository root
-php -S localhost:8080 -t apps/web
+# Using Python's built-in HTTP server
+python3 -m http.server 8080 -d apps/web
 ```
-
-Then visit `http://localhost:8080` in your browser.

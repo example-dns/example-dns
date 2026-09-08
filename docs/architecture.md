@@ -28,7 +28,7 @@ The ecosystem spans three designated domains, each serving a distinct architectu
 
 ```mermaid
 flowchart TD
-    User([End User / Admin]) -->|HTTPS| WebApp[example-dns.com<br/>PHP Landing Page & Interface]
+    User([End User / Admin]) -->|HTTPS| WebApp[example-dns.com<br/>HTML Landing Page & Interface]
     WebApp -->|PowerDNS REST API :8081| PrimaryNS[example-dns.net<br/>PowerDNS Primary Nameserver]
     PrimaryNS -->|Zone Transfer AXFR/IXFR / NOTIFY| SecondaryNS[example-dns.org<br/>PowerDNS Secondary Nameserver]
     
@@ -41,7 +41,7 @@ flowchart TD
 ```
 .
 ├── apps/
-│   └── web/                     # example-dns.com PHP landing page & web app
+│   └── web/                     # example-dns.com HTML landing page & web app
 ├── infra/                       # PowerDNS configs, schema, Docker Compose, and deployment manifests
 ├── docs/                        # Architectural specifications and project documentation
 ├── LICENSE                      # MIT License

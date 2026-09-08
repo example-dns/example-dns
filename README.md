@@ -19,7 +19,7 @@ See [Repository Mirrors](docs/mirrors.md) for local git configuration.
 
 | Domain | Role / Service | Description | Path |
 | --- | --- | --- | --- |
-| **`example-dns.com`** | Web Interface & Landing Page | Management dashboard, public landing page, and API | [`apps/web`](apps/web) |
+| **`example-dns.com`** | Web Interface & Landing Page | Management dashboard and public landing page | [`apps/web`](apps/web) |
 | **`example-dns.net`** | Primary Nameserver | Authoritative PowerDNS master nameserver & REST API | [`infra/powerdns/primary.conf`](infra/powerdns/primary.conf) |
 | **`example-dns.org`** | Secondary Nameserver | Authoritative PowerDNS slave / fallback nameserver | [`infra/powerdns/secondary.conf`](infra/powerdns/secondary.conf) |
 
@@ -30,7 +30,7 @@ See [Repository Mirrors](docs/mirrors.md) for local git configuration.
 ```
 .
 ├── apps/
-│   └── web/                     # example-dns.com PHP landing page & web app
+│   └── web/                     # example-dns.com HTML landing page & web app
 ├── infra/                       # PowerDNS configs, schema, Docker Compose, and deployment manifests
 ├── docs/                        # Architecture and ecosystem documentation
 ├── CONTRIBUTING.md              # Contribution guidelines
