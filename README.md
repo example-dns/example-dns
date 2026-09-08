@@ -33,8 +33,6 @@ See [Repository Mirrors](docs/mirrors.md) for local git configuration.
 │   ├── web/                     # example-dns.com web application & dashboard
 │   ├── nameserver-primary/      # example-dns.net authoritative primary nameserver
 │   └── nameserver-secondary/    # example-dns.org authoritative secondary nameserver
-├── packages/
-│   └── common/                  # Shared types, protocols, and config
 ├── infra/                       # Infrastructure, Docker, and deployment manifests
 ├── docs/                        # Architecture and ecosystem documentation
 ├── CONTRIBUTING.md              # Contribution guidelines

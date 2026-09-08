@@ -4,11 +4,6 @@ Thank you for your interest in contributing to `example-dns`!
 
 `example-dns` is an open-source project by [ternis.org](https://ternis.org) (by [ternis.dev](https://ternis.dev) and [ternis.net](https://ternis.net)).
 
-## Technology Stack Constraints
-
-> [!IMPORTANT]
-> **No Node.js or npm**: `example-dns` does not use Node.js, npm, or JavaScript runtime tooling anywhere in the codebase. All contributions must adhere to this constraint.
-
 ## Getting Started
 
 1. **Repository Mirrors**:
@@ -21,7 +16,6 @@ Thank you for your interest in contributing to `example-dns`!
 - Changes to the web UI and management API should be scoped within `apps/web/`.
 - Changes to the primary nameserver belong in `apps/nameserver-primary/`.
 - Changes to the secondary nameserver belong in `apps/nameserver-secondary/`.
-- Shared logic, models, and protocols belong in `packages/common/`.
 - Infrastructure and deployment configurations belong in `infra/`.
 
 ## Pull Request Guidelines
