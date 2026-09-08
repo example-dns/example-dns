@@ -1,0 +1,59 @@
+services:
+  powerdns-primary:
+    image: powerdns/pdns-auth-48:latest
+    container_name: example-dns-primary
+    restart: unless-stopped
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+      - "8081:8081"
+    volumes:
+      - ./powerdns/primary.conf:/etc/powerdns/pdns.conf:ro
+      - ./powerdns/schema.sql:/etc/powerdns/schema.sql:ro
+      - primary-data:/var/lib/powerdns
+    environment:
+      - PDNS_API_KEY=example-dns-secret-api-key
+    networks:
+      - example-dns-net
+
+  powerdns-secondary:
+    image: powerdns/pdns-auth-48:latest
+    container_name: example-dns-secondary
+    restart: unless-stopped
+    ports:
+      - "5353:53/udp"
+      - "5353:53/tcp"
+    volumes:
+      - ./powerdns/secondary.conf:/etc/powerdns/pdns.conf:ro
+      - ./powerdns/schema.sql:/etc/powerdns/schema.sql:ro
+      - secondary-data:/var/lib/powerdns
+    depends_on:
+      - powerdns-primary
+    networks:
+      - example-dns-net
+
+  web:
+    image: php:8.4-cli-alpine
+    container_name: example-dns-web
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ../apps/web:/app
+    command: ["php", "-S", "0.0.0.0:8080", "-t", "/app"]
+    ports:
+      - "8080:8080"
+    environment:
+      - PDNS_API_URL=http://powerdns-primary:8081
+      - PDNS_API_KEY=example-dns-secret-api-key
+    depends_on:
+      - powerdns-primary
+    networks:
+      - example-dns-net
+
+volumes:
+  primary-data:
+  secondary-data:
+
+networks:
+  example-dns-net:
+    driver: bridge

@@ -1,6 +1,6 @@
 # example-dns
 
-`example-dns` is the official monorepo for the open-source DNS network and service infrastructure created by [ternis.org](https://ternis.org) (by [ternis.dev](https://ternis.dev) and [ternis.net](https://ternis.net)).
+`example-dns` is the official monorepo for the open-source DNS network and service infrastructure created by [ternis.org](https://ternis.org) (by [ternis.dev](https://ternis.dev) and [ternis.net](https://ternis.net)). The nameserver network is powered by **PowerDNS Authoritative Server**.
 
 ---
 
@@ -20,8 +20,8 @@ See [Repository Mirrors](docs/mirrors.md) for local git configuration.
 | Domain | Role / Service | Description | Path |
 | --- | --- | --- | --- |
 | **`example-dns.com`** | Web Interface & Landing Page | Management dashboard, public landing page, and API | [`apps/web`](apps/web) |
-| **`example-dns.net`** | Primary Nameserver | Authoritative master nameserver | `infra/` / External node |
-| **`example-dns.org`** | Secondary Nameserver | Authoritative slave / fallback nameserver | `infra/` / External node |
+| **`example-dns.net`** | Primary Nameserver | Authoritative PowerDNS master nameserver & REST API | [`infra/powerdns/primary.conf`](infra/powerdns/primary.conf) |
+| **`example-dns.org`** | Secondary Nameserver | Authoritative PowerDNS slave / fallback nameserver | [`infra/powerdns/secondary.conf`](infra/powerdns/secondary.conf) |
 
 ---
 
@@ -31,7 +31,7 @@ See [Repository Mirrors](docs/mirrors.md) for local git configuration.
 .
 ├── apps/
 │   └── web/                     # example-dns.com PHP landing page & web app
-├── infra/                       # Infrastructure, Docker, and deployment manifests
+├── infra/                       # PowerDNS configs, schema, Docker Compose, and deployment manifests
 ├── docs/                        # Architecture and ecosystem documentation
 ├── CONTRIBUTING.md              # Contribution guidelines
 ├── SECURITY.md                  # Security reporting policy
@@ -39,7 +39,7 @@ See [Repository Mirrors](docs/mirrors.md) for local git configuration.
 └── README.md
 ```
 
-Detailed architectural specifications and data flow diagrams are available in [Architecture Documentation](docs/architecture.md).
+Detailed architectural specifications and data flow diagrams are available in [Architecture Documentation](docs/architecture.md). Deployment and PowerDNS setup instructions are available in [Infrastructure README](infra/README.md).
 
 ---
 
