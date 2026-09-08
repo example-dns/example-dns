@@ -31,99 +31,76 @@ $imprint_url = "https://ternis.dev/{$locale}/legal/imprint";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($t['title'], ENT_QUOTES, 'UTF-8') ?></title>
     <meta name="description" content="<?= htmlspecialchars($t['tagline'], ENT_QUOTES, 'UTF-8') ?>">
-    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
-        <div class="container nav-wrapper">
-            <a href="?locale=<?= urlencode($locale) ?>" class="brand">
-                <span class="brand-dot"></span>
-                example-dns
-            </a>
-            <nav class="lang-switch" aria-label="Language selector">
-                <a href="?locale=en" class="lang-btn <?= $locale === 'en' ? 'active' : '' ?>">EN</a>
-                <a href="?locale=de" class="lang-btn <?= $locale === 'de' ? 'active' : '' ?>">DE</a>
-            </nav>
-        </div>
+        <p><strong><a href="?locale=<?= urlencode($locale) ?>">example-dns</a></strong></p>
+        <nav aria-label="Language selector">
+            <a href="?locale=en">EN</a> | <a href="?locale=de">DE</a>
+        </nav>
     </header>
+    <hr>
 
     <main>
-        <section class="hero">
-            <div class="container">
-                <div class="badge">
-                    <span>⚡</span>
-                    <?= htmlspecialchars($t['badge_open_source'], ENT_QUOTES, 'UTF-8') ?>
-                </div>
-                <h1><?= htmlspecialchars($t['hero_heading'], ENT_QUOTES, 'UTF-8') ?></h1>
-                <p><?= htmlspecialchars($t['hero_description'], ENT_QUOTES, 'UTF-8') ?></p>
-                <div class="hero-actions">
-                    <a href="https://github.com/example-dns/example-dns" target="_blank" rel="noopener" class="btn btn-primary">
-                        <?= htmlspecialchars($t['view_on_github'], ENT_QUOTES, 'UTF-8') ?> &rarr;
-                    </a>
-                    <a href="https://codeberg.org/example-dns/example-dns" target="_blank" rel="noopener" class="btn btn-primary">
-                        <?= htmlspecialchars($t['view_on_codeberg'], ENT_QUOTES, 'UTF-8') ?> &rarr;
-                    </a>
-                </div>
-                <div class="hero-subtext">
-                    <?= $t['project_by'] ?>
-                </div>
-            </div>
+        <section>
+            <h1><?= htmlspecialchars($t['hero_heading'], ENT_QUOTES, 'UTF-8') ?></h1>
+            <p><small><?= htmlspecialchars($t['badge_open_source'], ENT_QUOTES, 'UTF-8') ?></small></p>
+            <p><?= htmlspecialchars($t['hero_description'], ENT_QUOTES, 'UTF-8') ?></p>
+            <p>
+                <a href="https://github.com/example-dns/example-dns" target="_blank" rel="noopener"><?= htmlspecialchars($t['view_on_github'], ENT_QUOTES, 'UTF-8') ?></a> |
+                <a href="https://codeberg.org/example-dns/example-dns" target="_blank" rel="noopener"><?= htmlspecialchars($t['view_on_codeberg'], ENT_QUOTES, 'UTF-8') ?></a>
+            </p>
+            <p><small><?= $t['project_by'] ?></small></p>
         </section>
+        <hr>
 
         <section>
-            <div class="container">
-                <h2 class="section-title"><?= htmlspecialchars($t['infrastructure_title'], ENT_QUOTES, 'UTF-8') ?></h2>
-                <div class="grid-3">
-                    <article class="card">
-                        <div class="card-tag">Portal &amp; UI</div>
-                        <h3><?= htmlspecialchars($t['domain_web_title'], ENT_QUOTES, 'UTF-8') ?></h3>
-                        <p><?= htmlspecialchars($t['domain_web_desc'], ENT_QUOTES, 'UTF-8') ?></p>
-                    </article>
-                    <article class="card">
-                        <div class="card-tag">Primary NS</div>
-                        <h3><?= htmlspecialchars($t['domain_primary_title'], ENT_QUOTES, 'UTF-8') ?></h3>
-                        <p><?= htmlspecialchars($t['domain_primary_desc'], ENT_QUOTES, 'UTF-8') ?></p>
-                    </article>
-                    <article class="card">
-                        <div class="card-tag">Secondary NS</div>
-                        <h3><?= htmlspecialchars($t['domain_secondary_title'], ENT_QUOTES, 'UTF-8') ?></h3>
-                        <p><?= htmlspecialchars($t['domain_secondary_desc'], ENT_QUOTES, 'UTF-8') ?></p>
-                    </article>
-                </div>
-            </div>
+            <h2><?= htmlspecialchars($t['infrastructure_title'], ENT_QUOTES, 'UTF-8') ?></h2>
+            <ul>
+                <li>
+                    <strong><?= htmlspecialchars($t['domain_web_title'], ENT_QUOTES, 'UTF-8') ?></strong> &mdash;
+                    <?= htmlspecialchars($t['domain_web_desc'], ENT_QUOTES, 'UTF-8') ?>
+                </li>
+                <li>
+                    <strong><?= htmlspecialchars($t['domain_primary_title'], ENT_QUOTES, 'UTF-8') ?></strong> &mdash;
+                    <?= htmlspecialchars($t['domain_primary_desc'], ENT_QUOTES, 'UTF-8') ?>
+                </li>
+                <li>
+                    <strong><?= htmlspecialchars($t['domain_secondary_title'], ENT_QUOTES, 'UTF-8') ?></strong> &mdash;
+                    <?= htmlspecialchars($t['domain_secondary_desc'], ENT_QUOTES, 'UTF-8') ?>
+                </li>
+            </ul>
         </section>
+        <hr>
 
         <section>
-            <div class="container">
-                <h2 class="section-title"><?= htmlspecialchars($t['features_title'], ENT_QUOTES, 'UTF-8') ?></h2>
-                <div class="grid-3">
-                    <article class="card">
-                        <h3><?= htmlspecialchars($t['feature_perf_title'], ENT_QUOTES, 'UTF-8') ?></h3>
-                        <p><?= htmlspecialchars($t['feature_perf_desc'], ENT_QUOTES, 'UTF-8') ?></p>
-                    </article>
-                    <article class="card">
-                        <h3><?= htmlspecialchars($t['feature_oss_title'], ENT_QUOTES, 'UTF-8') ?></h3>
-                        <p><?= htmlspecialchars($t['feature_oss_desc'], ENT_QUOTES, 'UTF-8') ?></p>
-                    </article>
-                    <article class="card">
-                        <h3><?= htmlspecialchars($t['feature_standards_title'], ENT_QUOTES, 'UTF-8') ?></h3>
-                        <p><?= htmlspecialchars($t['feature_standards_desc'], ENT_QUOTES, 'UTF-8') ?></p>
-                    </article>
-                </div>
-            </div>
+            <h2><?= htmlspecialchars($t['features_title'], ENT_QUOTES, 'UTF-8') ?></h2>
+            <ul>
+                <li>
+                    <strong><?= htmlspecialchars($t['feature_perf_title'], ENT_QUOTES, 'UTF-8') ?></strong>:
+                    <?= htmlspecialchars($t['feature_perf_desc'], ENT_QUOTES, 'UTF-8') ?>
+                </li>
+                <li>
+                    <strong><?= htmlspecialchars($t['feature_oss_title'], ENT_QUOTES, 'UTF-8') ?></strong>:
+                    <?= htmlspecialchars($t['feature_oss_desc'], ENT_QUOTES, 'UTF-8') ?>
+                </li>
+                <li>
+                    <strong><?= htmlspecialchars($t['feature_standards_title'], ENT_QUOTES, 'UTF-8') ?></strong>:
+                    <?= htmlspecialchars($t['feature_standards_desc'], ENT_QUOTES, 'UTF-8') ?>
+                </li>
+            </ul>
         </section>
     </main>
+    <hr>
 
     <footer>
-        <div class="container footer-content">
-            <p><?= $t['footer_text'] ?></p>
-            <ul class="footer-links">
-                <li><a href="<?= htmlspecialchars($imprint_url, ENT_QUOTES, 'UTF-8') ?>" target="_blank" rel="noopener"><?= htmlspecialchars($t['imprint'], ENT_QUOTES, 'UTF-8') ?></a></li>
-                <li><a href="https://github.com/example-dns/example-dns" target="_blank" rel="noopener">GitHub</a></li>
-                <li><a href="https://codeberg.org/example-dns/example-dns" target="_blank" rel="noopener">Codeberg</a></li>
-                <li><a href="https://ternis.org" target="_blank" rel="noopener">ternis.org</a></li>
-            </ul>
-        </div>
+        <p><?= $t['footer_text'] ?></p>
+        <nav>
+            <a href="<?= htmlspecialchars($imprint_url, ENT_QUOTES, 'UTF-8') ?>" target="_blank" rel="noopener"><?= htmlspecialchars($t['imprint'], ENT_QUOTES, 'UTF-8') ?></a> |
+            <a href="https://github.com/example-dns/example-dns" target="_blank" rel="noopener">GitHub</a> |
+            <a href="https://codeberg.org/example-dns/example-dns" target="_blank" rel="noopener">Codeberg</a> |
+            <a href="https://ternis.org" target="_blank" rel="noopener">ternis.org</a>
+        </nav>
     </footer>
 </body>
 </html>
