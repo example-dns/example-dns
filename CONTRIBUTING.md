@@ -4,6 +4,11 @@ Thank you for your interest in contributing to `example-dns`!
 
 `example-dns` is an open-source project by [ternis.org](https://ternis.org) (by [ternis.dev](https://ternis.dev) and [ternis.net](https://ternis.net)).
 
+## Technology Stack Constraints
+
+> [!IMPORTANT]
+> **No Node.js or npm**: `example-dns` does not use Node.js, npm, or JavaScript runtime tooling anywhere in the codebase. All contributions must adhere to this constraint.
+
 ## Getting Started
 
 1. **Repository Mirrors**:

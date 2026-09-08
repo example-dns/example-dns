@@ -2,6 +2,10 @@
 
 `example-dns` is organized as a monorepo containing the applications, services, and infrastructure required to run the `example-dns` open-source DNS network.
 
+## Technology Stack Constraints
+
+- **No Node.js / npm**: `example-dns` strictly excludes Node.js, npm, or JavaScript runtime dependencies across all services, tooling, and infrastructure.
+
 ## Domain Roles & Infrastructure
 
 The ecosystem spans three designated domains, each serving a distinct architectural role:

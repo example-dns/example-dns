@@ -22,9 +22,8 @@ logs/
 *.pid
 *.seed
 
-# Build & Dependencies
+# Build & Compiled Binaries
 dist/
 build/
-node_modules/
 target/
 bin/
