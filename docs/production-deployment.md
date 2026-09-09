@@ -74,7 +74,7 @@ NS  example-dns.org.
 ```
 
 ### Benefits of the 4-NS Set:
-1. **Multi-Subnet Diversity**: Spans subnet `77.90.60.0/24` (AS210083) and subnet `94.249.188.0/24` (AS207198).
+1. **Multi-Subnet Diversity**: Spans separate /24 subnets (`77.90.60.0/24` and `94.249.188.0/24`) on AS215365.
 2. **Zero Downtime Migration**: Existing domains using `ternis.net` can add `example-dns` nameservers with 0 downtime.
 3. **Registry Compliance**: Passes automated registry validation tests (DENIC Nautic, AFNIC Zonemaster) with 0 errors.
 

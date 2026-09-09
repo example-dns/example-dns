@@ -23,8 +23,8 @@ return [
     'cta_codeberg' => 'Mirror auf Codeberg',
 
     // Stats / Metrics
-    'stat_asns_value' => '2 diverse ASNs',
-    'stat_asns_label' => 'AS210083 & AS207198 Routing-Diversität',
+    'stat_asns_value' => '2 /24-Subnetze',
+    'stat_asns_label' => '77.90.60.0/24 & 94.249.188.0/24 Diversität',
     'stat_ns_value' => '4 aktive Nameserver',
     'stat_ns_label' => 'Dual-Cluster Interoperabilität mit ternis.net',
     'stat_sync_value' => '< 500ms',
@@ -34,7 +34,7 @@ return [
 
     // Cluster Nodes Section
     'network_section_title' => 'Produktions-Cluster-Topologie',
-    'network_section_subtitle' => 'Unsere produktive Nameserver-Infrastruktur operiert über physisch isolierte Nodes, getrennte Subnetze und autonome Systeme hinweg, um absolute Ausfallsicherheit ohne Single Point of Failure zu garantieren.',
+    'network_section_subtitle' => 'Unsere produktive Nameserver-Infrastruktur operiert über physisch isolierte Nodes und getrennte /24-Subnetze hinweg, um absolute Ausfallsicherheit zu garantieren.',
     'node_primary_name' => 'Node 1 — Primärer Master',
     'node_primary_host' => 'example-dns.net',
     'node_primary_role' => 'Primärer autoritativer & REST-API-Master',
@@ -49,7 +49,7 @@ return [
     'node_web_desc' => 'Schlanker semantischer Webdienst, öffentliches API-Gateway und Caddy On-Demand-Zertifikatsvalidierung für gehostete Domains.',
     'lbl_ipv4' => 'IPv4',
     'lbl_ipv6' => 'IPv6',
-    'lbl_asn' => 'Netzwerk / ASN',
+    'lbl_asn' => 'Subnetz / Netzwerk',
     'lbl_engine' => 'Engine & Backend',
     'lbl_status' => 'Status',
     'lbl_status_online' => 'Betriebsbereit',
@@ -79,8 +79,8 @@ return [
     // Architectural Pillars
     'arch_section_title' => 'Architektonische Grundlagen',
     'arch_section_subtitle' => 'Von Grund auf konzipiert für kompromisslose Stabilität, minimale Latenz, kryptografische Integrität und maximale Transparenz.',
-    'pillar_asn_title' => 'Subnetz- und ASN-Diversität',
-    'pillar_asn_desc' => 'Nameserver laufen in getrennten autonomen Systemen (AS210083 & AS207198) mit physisch entkoppelten Netzwerkwegen.',
+    'pillar_asn_title' => 'Subnetz- und IP-Diversität',
+    'pillar_asn_desc' => 'Nameserver laufen auf getrennten /24-IPv4-Subnetzen (77.90.60.0/24 & 94.249.188.0/24) und separaten IPv6-Blöcken auf dedizierten Nodes.',
     'pillar_repl_title' => 'Automatisierte Supermaster-Replikation',
     'pillar_repl_desc' => 'Unmittelbarer Zonenabgleich per RFC 1996 DNS NOTIFY und RFC 5936 AXFR mit automatischer SQLite-Provisionierung.',
     'pillar_dnssec_title' => 'Gehärtete DNSSEC-Signierung',
