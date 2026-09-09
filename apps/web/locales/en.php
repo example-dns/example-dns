@@ -14,6 +14,7 @@ return [
     'nav_delegation' => 'Delegation',
     'nav_architecture' => 'Architecture',
     'nav_deployment' => 'Deploy',
+    'nav_admin' => 'Admin Portal',
     
     // Hero
     'hero_title' => 'Resilient, Autonomous DNS Infrastructure for the Open Web',

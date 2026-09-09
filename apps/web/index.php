@@ -212,6 +212,20 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
             color: var(--text);
         }
 
+        .nav-links a.nav-admin-btn {
+            color: var(--primary);
+            font-weight: 600;
+            padding: 0.25rem 0.625rem;
+            background-color: var(--primary-light);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .nav-links a.nav-admin-btn:hover {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
         .lang-nav {
             display: inline-flex;
             align-items: center;
@@ -948,6 +962,7 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
                         <li><a href="#delegation"><?= htmlspecialchars($t['nav_delegation'], ENT_QUOTES, 'UTF-8') ?></a></li>
                         <li><a href="#architecture"><?= htmlspecialchars($t['nav_architecture'], ENT_QUOTES, 'UTF-8') ?></a></li>
                         <li><a href="#deploy"><?= htmlspecialchars($t['nav_deployment'], ENT_QUOTES, 'UTF-8') ?></a></li>
+                        <li><a href="https://admin.example-dns.com" target="_blank" rel="noopener" class="nav-admin-btn"><?= htmlspecialchars($t['nav_admin'], ENT_QUOTES, 'UTF-8') ?> &rarr;</a></li>
                     </ul>
                 </nav>
 
@@ -975,7 +990,14 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
                 <p class="hero-desc"><?= htmlspecialchars($t['hero_description'], ENT_QUOTES, 'UTF-8') ?></p>
 
                 <div class="hero-actions">
-                    <a href="#delegation" class="btn btn-primary">
+                    <a href="https://admin.example-dns.com" class="btn btn-primary" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="2" y="3" width="12" height="10" rx="2"></rect>
+                            <circle cx="8" cy="8" r="1"></circle>
+                        </svg>
+                        <?= htmlspecialchars($t['nav_admin'], ENT_QUOTES, 'UTF-8') ?>
+                    </a>
+                    <a href="#delegation" class="btn btn-secondary">
                         <?= htmlspecialchars($t['cta_delegation'], ENT_QUOTES, 'UTF-8') ?>
                         <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <line x1="8" y1="3" x2="8" y2="13"></line>

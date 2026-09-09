@@ -14,6 +14,7 @@ return [
     'nav_delegation' => 'Delegierung',
     'nav_architecture' => 'Architektur',
     'nav_deployment' => 'Deployment',
+    'nav_admin' => 'Admin-Portal',
     
     // Hero
     'hero_title' => 'Resiliente, autonome DNS-Infrastruktur für das offene Web',
