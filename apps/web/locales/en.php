@@ -1,10 +1,12 @@
 <?php
+declare(strict_types=1);
 
 return [
     'lang_code' => 'en',
     'lang_name' => 'English',
     'title' => 'example-dns — Open-Source DNS Infrastructure',
     'tagline' => 'Reliable, open-source DNS infrastructure and nameserver ecosystem.',
+    'seo_keywords' => 'DNS, PowerDNS, authoritative nameserver, open source, AXFR, SQLite, infrastructure, high availability',
     'project_by' => 'A project by <a href="https://ternis.org" target="_blank" rel="noopener">ternis.org</a> (by <a href="https://ternis.dev" target="_blank" rel="noopener">ternis.dev</a> &amp; <a href="https://ternis.net" target="_blank" rel="noopener">ternis.net</a>).',
     'badge_open_source' => '100% Open Source',
     'hero_heading' => 'Next-Generation Open DNS Infrastructure',
@@ -13,10 +15,13 @@ return [
     'view_on_codeberg' => 'Codeberg',
     'infrastructure_title' => 'Ecosystem & Infrastructure',
     'domain_web_title' => 'example-dns.com',
+    'domain_web_badge' => 'Web & Portal',
     'domain_web_desc' => 'Public landing page, portal interface, and API gateway for DNS configuration.',
     'domain_primary_title' => 'example-dns.net',
+    'domain_primary_badge' => 'Primary Nameserver',
     'domain_primary_desc' => 'Primary authoritative nameserver powered by PowerDNS handling real-time resolution and zone mastering.',
     'domain_secondary_title' => 'example-dns.org',
+    'domain_secondary_badge' => 'Secondary Nameserver',
     'domain_secondary_desc' => 'Secondary authoritative nameserver powered by PowerDNS delivering geographic redundancy and failover.',
     'features_title' => 'Core Strengths',
     'feature_perf_title' => 'Low Latency & High Availability',

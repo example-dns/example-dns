@@ -1,10 +1,12 @@
 <?php
+declare(strict_types=1);
 
 return [
     'lang_code' => 'de',
     'lang_name' => 'Deutsch',
     'title' => 'example-dns — Open-Source DNS-Infrastruktur',
     'tagline' => 'Zuverlässige, quelloffene DNS-Infrastruktur und Nameserver-Ökosystem.',
+    'seo_keywords' => 'DNS, PowerDNS, autoritativer Nameserver, Open Source, AXFR, SQLite, Infrastruktur, Hochverfügbarkeit',
     'project_by' => 'Ein Projekt von <a href="https://ternis.org" target="_blank" rel="noopener">ternis.org</a> (von <a href="https://ternis.dev" target="_blank" rel="noopener">ternis.dev</a> &amp; <a href="https://ternis.net" target="_blank" rel="noopener">ternis.net</a>).',
     'badge_open_source' => '100% Open Source',
     'hero_heading' => 'Moderne quelloffene DNS-Infrastruktur',
@@ -13,10 +15,13 @@ return [
     'view_on_codeberg' => 'Codeberg',
     'infrastructure_title' => 'Ökosystem & Infrastruktur',
     'domain_web_title' => 'example-dns.com',
+    'domain_web_badge' => 'Web & Portal',
     'domain_web_desc' => 'Öffentliche Landingpage, Portaloberfläche und API-Gateway für DNS-Konfigurationen.',
     'domain_primary_title' => 'example-dns.net',
+    'domain_primary_badge' => 'Primärer Nameserver',
     'domain_primary_desc' => 'Primärer autoritativer Nameserver auf PowerDNS-Basis für Echtzeitauflösung und Zonen-Mastering.',
     'domain_secondary_title' => 'example-dns.org',
+    'domain_secondary_badge' => 'Sekundärer Nameserver',
     'domain_secondary_desc' => 'Sekundärer autoritativer Nameserver auf PowerDNS-Basis für geografische Redundanz und Ausfallsicherheit.',
     'features_title' => 'Kernmerkmale',
     'feature_perf_title' => 'Geringe Latenz & Hochverfügbarkeit',

@@ -4,10 +4,12 @@ This directory houses the PHP-powered web landing page and portal for `example-d
 
 ## Features
 
-- **PHP-powered**: Lightweight server-side rendering with zero dependencies (no npm, Node.js, or client-side JavaScript required)
+- **PHP-powered**: Lightweight server-side rendering with zero dependencies (no npm, Node.js, or build pipelines required)
 - **Internationalization (i18n)**: English (`en`) and German (`de`) with auto browser-language detection and manual switcher (`?locale=en`, `?locale=de`)
+- **SEO & Social Optimization**: Comprehensive meta tags, Open Graph, Twitter Cards, `hreflang` alternates, canonical links, and Schema.org JSON-LD structured data
+- **Modern Minimalist Styles**: Lightweight native lightmode with zero CSS frameworks, responsive typography, and focused micro-interactions (button color transitions and moving SVG arrow on hover)
 - **Direct Imprint Link**: `https://ternis.dev/{locale}/legal/imprint`
-- **Pure Semantic HTML**: No CSS stylesheets, clean accessible markup
+- **Semantic HTML**: Clean, accessible, semantic structure (`<header>`, `<main>`, `<section>`, `<article>`, `<footer>`)
 
 ## Local Development
 
