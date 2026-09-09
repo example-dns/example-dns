@@ -1,4 +1,29 @@
 services:
+  init-db:
+    image: alpine:latest
+    container_name: example-dns-init-db
+    restart: "no"
+    volumes:
+      - ./powerdns/schema.sql:/etc/powerdns/schema.sql:ro
+      - primary-data:/data/primary
+      - secondary-data:/data/secondary
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        apk add --no-cache sqlite
+        if [ ! -s /data/primary/pdns-primary.sqlite3 ]; then
+          echo "Initializing PowerDNS primary SQLite database..."
+          sqlite3 /data/primary/pdns-primary.sqlite3 < /etc/powerdns/schema.sql
+          chmod 666 /data/primary/pdns-primary.sqlite3
+        fi
+        if [ ! -s /data/secondary/pdns-secondary.sqlite3 ]; then
+          echo "Initializing PowerDNS secondary SQLite database..."
+          sqlite3 /data/secondary/pdns-secondary.sqlite3 < /etc/powerdns/schema.sql
+          chmod 666 /data/secondary/pdns-secondary.sqlite3
+        fi
+        echo "SQLite initialization completed successfully."
+
   powerdns-primary:
     image: powerdns/pdns-auth-48:latest
     container_name: example-dns-primary
@@ -13,6 +38,9 @@ services:
       - primary-data:/var/lib/powerdns
     environment:
       - PDNS_API_KEY=example-dns-secret-api-key
+    depends_on:
+      init-db:
+        condition: service_completed_successfully
     networks:
       - example-dns-net
 
@@ -28,7 +56,10 @@ services:
       - ./powerdns/schema.sql:/etc/powerdns/schema.sql:ro
       - secondary-data:/var/lib/powerdns
     depends_on:
-      - powerdns-primary
+      init-db:
+        condition: service_completed_successfully
+      powerdns-primary:
+        condition: service_started
     networks:
       - example-dns-net
 

@@ -24,35 +24,55 @@ The DNS network is powered by **PowerDNS Authoritative Server**:
 
 ### Option 1: Native VPS / Bare-Metal Deployment
 
-For production nameservers on a clean Debian or Ubuntu VPS (e.g., at Hetzner, DigitalOcean, Linode, OVH):
+For production nameservers on a clean Debian or Ubuntu VPS (e.g., Hetzner, DigitalOcean, Linode, OVH).
 
-#### 1. Primary Nameserver (`example-dns.net`)
-
-Clone the repo or transfer `infra/` to the VPS, then run:
+You can run the installer either by cloning the repository or using a single curl command:
 
 ```bash
-sudo bash infra/scripts/install-vps.sh --role primary --api-key "your-secure-api-key"
+# Via curl directly on the VPS:
+curl -sSL https://raw.githubusercontent.com/example-dns/example-dns/master/infra/scripts/install-vps.sh | sudo bash -s -- --role <primary|secondary|web|all>
 ```
 
-The installer will:
-1. Disable `systemd-resolved`'s local DNS stub listener to free port `53`.
-2. Install `pdns-server` and `pdns-backend-sqlite3`.
-3. Initialize the SQLite schema in `/var/lib/powerdns/pdns-primary.sqlite3`.
-4. Configure `/etc/powerdns/pdns.conf` in master mode with the REST API enabled on port `8081`.
-5. Configure UFW firewall rules for DNS traffic (UDP/TCP 53).
-6. Enable and restart `pdns.service`.
+#### Roles Available:
 
-#### 2. Secondary Nameserver (`example-dns.org`)
+- **`--role primary` (`example-dns.net`)**:
+  - PowerDNS Authoritative Master node
+  - Configures SQLite3 backend with auto-initialized schema
+  - PowerDNS HTTP REST API enabled on port `8081`
+  - Frees port 53 from `systemd-resolved` and opens firewall rules (53/udp, 53/tcp)
+  - Enables `pdns.service`
 
-On your secondary VPS:
+  ```bash
+  sudo bash infra/scripts/install-vps.sh --role primary --api-key "your-secure-api-key"
+  ```
 
-```bash
-sudo bash infra/scripts/install-vps.sh --role secondary
-```
+- **`--role secondary` (`example-dns.org`)**:
+  - PowerDNS Authoritative Slave node with `autosecondary=yes`
+  - Replicates zones automatically from primary via AXFR / NOTIFY
+  - Frees port 53 and opens firewall rules
 
-The installer configures PowerDNS in slave mode with `autosecondary=yes`, listening on port 53.
+  ```bash
+  sudo bash infra/scripts/install-vps.sh --role secondary
+  ```
 
-#### 3. Authorizing Zone Transfers between VPS Nodes
+- **`--role web` (`example-dns.com`)**:
+  - Installs PHP runtime
+  - Deploys `apps/web` to `/var/www/example-dns/apps/web`
+  - Creates and starts systemd service `example-dns-web.service` on port `8080` (or custom `--web-port`)
+  - Opens firewall for web traffic
+
+  ```bash
+  sudo bash infra/scripts/install-vps.sh --role web --web-port 8080
+  ```
+
+- **`--role all`**:
+  - Provisions both the primary PowerDNS nameserver and the web portal on a single VPS node.
+
+  ```bash
+  sudo bash infra/scripts/install-vps.sh --role all --api-key "your-secure-api-key"
+  ```
+
+#### Authorizing Zone Transfers between VPS Nodes
 
 To allow the secondary nameserver to automatically receive DNS NOTIFY packets and provision zones from the primary:
 
