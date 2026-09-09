@@ -1082,7 +1082,7 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
                             </tr>
                             <tr>
                                 <th><?= htmlspecialchars($t['lbl_asn'], ENT_QUOTES, 'UTF-8') ?></th>
-                                <td>77.90.60.0/24 (AS215365)</td>
+                                <td>AS215365 (Threatoff)</td>
                             </tr>
                             <tr>
                                 <th><?= htmlspecialchars($t['lbl_engine'], ENT_QUOTES, 'UTF-8') ?></th>
@@ -1128,7 +1128,7 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
                             </tr>
                             <tr>
                                 <th><?= htmlspecialchars($t['lbl_asn'], ENT_QUOTES, 'UTF-8') ?></th>
-                                <td>94.249.188.0/24 (AS215365)</td>
+                                <td>AS215365 (Threatoff)</td>
                             </tr>
                             <tr>
                                 <th><?= htmlspecialchars($t['lbl_engine'], ENT_QUOTES, 'UTF-8') ?></th>

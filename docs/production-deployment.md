@@ -18,7 +18,7 @@ This document details the live production deployment of the **`example-dns`** ne
 
 ## 2. Production Topology & Cluster Nodes
 
-The live cluster consists of two independent virtual server nodes hosted on diverse subnets and physical routing paths to fulfill strict registrar redundancy standards (such as DENIC for `.de` and AFNIC for `.fr`/`.re`).
+The live cluster consists of two independent virtual server nodes with distinct dedicated IP addresses to fulfill strict registrar redundancy standards (such as DENIC for `.de` and AFNIC for `.fr`/`.re`).
 
 ```mermaid
 flowchart TD
@@ -74,7 +74,7 @@ NS  example-dns.org.
 ```
 
 ### Benefits of the 4-NS Set:
-1. **Multi-Subnet Diversity**: Spans separate /24 subnets (`77.90.60.0/24` and `94.249.188.0/24`) on AS215365.
+1. **IP Diversity**: Operates across two independent server nodes with distinct IP addresses (`77.90.60.110` and `94.249.188.145`) on AS215365.
 2. **Zero Downtime Migration**: Existing domains using `ternis.net` can add `example-dns` nameservers with 0 downtime.
 3. **Registry Compliance**: Passes automated registry validation tests (DENIC Nautic, AFNIC Zonemaster) with 0 errors.
 

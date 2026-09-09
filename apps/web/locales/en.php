@@ -18,14 +18,14 @@ return [
     
     // Hero
     'hero_title' => 'Resilient, Autonomous DNS Infrastructure for the Open Web',
-    'hero_description' => 'example-dns is a high-availability, multi-subnet authoritative DNS network powered by PowerDNS. Engineered with dual-cluster topology, automated AXFR zone replication, native DNSSEC, and strict registry compliance.',
+    'hero_description' => 'example-dns is a high-availability authoritative DNS network powered by PowerDNS. Engineered with dual-cluster topology across independent server nodes, automated AXFR zone replication, native DNSSEC, and strict registry compliance.',
     'cta_delegation' => 'Configure Delegation',
     'cta_github' => 'Source on GitHub',
     'cta_codeberg' => 'Mirror on Codeberg',
 
     // Stats / Metrics
-    'stat_asns_value' => '2 /24 Subnets',
-    'stat_asns_label' => '77.90.60.0/24 & 94.249.188.0/24 diversity',
+    'stat_asns_value' => '2 Dedicated IPs',
+    'stat_asns_label' => '77.90.60.110 & 94.249.188.145 (Dual-Stack)',
     'stat_ns_value' => '4 Active Nameservers',
     'stat_ns_label' => 'Dual-cluster interoperability with ternis.net',
     'stat_sync_value' => '< 500ms',
@@ -35,7 +35,7 @@ return [
 
     // Cluster Nodes Section
     'network_section_title' => 'Production Cluster Topology',
-    'network_section_subtitle' => 'Our live nameserver infrastructure operates across physically isolated nodes and separate /24 subnets to ensure zero-point failure resilience.',
+    'network_section_subtitle' => 'Our live nameserver infrastructure operates across physically isolated nodes with dedicated IPv4 and IPv6 addresses to ensure zero-point failure resilience.',
     'node_primary_name' => 'Node 1 — Primary Master',
     'node_primary_host' => 'example-dns.net',
     'node_primary_role' => 'Primary Authoritative & REST API Master',
@@ -50,7 +50,7 @@ return [
     'node_web_desc' => 'Lightweight semantic web service, public API gateway, and Caddy on-demand certificate validation for authoritative domains.',
     'lbl_ipv4' => 'IPv4',
     'lbl_ipv6' => 'IPv6',
-    'lbl_asn' => 'Subnet / Network',
+    'lbl_asn' => 'Network / AS',
     'lbl_engine' => 'Engine & Backend',
     'lbl_status' => 'Status',
     'lbl_status_online' => 'Operational',
@@ -80,8 +80,8 @@ return [
     // Architectural Pillars
     'arch_section_title' => 'Architectural Foundation',
     'arch_section_subtitle' => 'Engineered from the ground up for absolute stability, low latency, cryptographic verification, and operational transparency.',
-    'pillar_asn_title' => 'Multi-Subnet IP Diversity',
-    'pillar_asn_desc' => 'Nameservers operate across distinct /24 IPv4 subnets (77.90.60.0/24 & 94.249.188.0/24) and independent IPv6 blocks on dedicated nodes.',
+    'pillar_asn_title' => 'Dual-Node IP Diversity',
+    'pillar_asn_desc' => 'Nameservers operate across independent server nodes with distinct IPv4 and IPv6 addresses, meeting strict registry redundancy standards.',
     'pillar_repl_title' => 'Automated Supermaster Replication',
     'pillar_repl_desc' => 'Immediate zone sync across nodes using RFC 1996 DNS NOTIFY and RFC 5936 AXFR transfers with SQLite superslave provisioning.',
     'pillar_dnssec_title' => 'Hardened DNSSEC Signing',
