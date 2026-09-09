@@ -7,11 +7,11 @@
 The authoritative nameserver infrastructure is powered by **PowerDNS Authoritative Server**:
 
 - **Primary Nameserver (`example-dns.net`)**:
-  - Operates in master mode.
+  - Operates in master mode (`primary=yes` / `master=yes`).
   - Exposes the PowerDNS HTTP REST API for automated zone creation, DNS record manipulation, and status reporting.
-  - Backed by high-performance SQLite/SQL storage with DNSSEC enabled.
+  - Backed by high-performance MariaDB (`gmysql`) or SQLite3 (`gsqlite3`) storage with DNSSEC enabled.
 - **Secondary Nameserver (`example-dns.org`)**:
-  - Operates in slave mode with automatic zone provisioning (`autosecondary`).
+  - Operates in slave mode with automatic zone provisioning (`autosecondary=yes`).
   - Replicates zones from the primary nameserver via AXFR/IXFR and DNS NOTIFY messages.
 
 ## Domain Roles & Infrastructure
@@ -29,21 +29,21 @@ The ecosystem spans three designated domains, each serving a distinct architectu
 ```mermaid
 flowchart TD
     User([End User / Admin]) -->|HTTPS| WebApp[example-dns.com<br/>PHP Landing Page & Interface]
-    WebApp -->|PowerDNS REST API :8081| PrimaryNS[example-dns.net<br/>PowerDNS Primary Nameserver]
-    PrimaryNS -->|Zone Transfer AXFR/IXFR / NOTIFY| SecondaryNS[example-dns.org<br/>PowerDNS Secondary Nameserver]
+    WebApp -->|PowerDNS REST API :8081| PrimaryNS[example-dns.net / one.ns.ternis.net<br/>PowerDNS Primary Nameserver]
+    PrimaryNS -->|Zone Transfer AXFR/IXFR / NOTIFY| SecondaryNS[example-dns.org / two.ns.ternis.net<br/>PowerDNS Secondary Nameserver]
     
     DNSClient([Public DNS Resolvers]) -->|DNS Query UDP/TCP 53| PrimaryNS
     DNSClient -->|DNS Query UDP/TCP 53| SecondaryNS
 ```
 
-## Monorepo Layout
+## Quad-Nameserver Topology (4-NS per zone)
 
-```
-.
-├── apps/
-│   └── web/                     # example-dns.com PHP landing page & web app
-├── infra/                       # PowerDNS configs, schema, Docker Compose, and deployment manifests
-├── docs/                        # Architectural specifications and project documentation
-├── LICENSE                      # MIT License
-└── README.md                    # Project landing page and overview
-```
+In production, each domain hosted on the network can be delegated to all four nameservers:
+- **`one.ns.ternis.net.`** (`77.90.60.110` / `2a14:7c0:1002:16c2::`)
+- **`two.ns.ternis.net.`** (`94.249.188.145` / `2a14:7c0:1002:169c::`)
+- **`example-dns.net.`** (`77.90.60.110` / `2a14:7c0:1002:16c2::`)
+- **`example-dns.org.`** (`94.249.188.145` / `2a14:7c0:1002:169c::`)
+
+This provides complete autonomous system and subnet diversification while supporting zero-downtime migration and brand interoperability.
+
+For the live server addresses, database backends, and deployment details, see the **[Production Environment & Deployment Guide](production-deployment.md)**.

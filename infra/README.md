@@ -7,7 +7,7 @@ This directory contains infrastructure-as-code, PowerDNS configuration, and Dock
 The DNS network is powered by **PowerDNS Authoritative Server**:
 
 - **`example-dns.net` (Primary Nameserver)**:
-  - Runs in master mode (`master=yes`) using the `gsqlite3` backend.
+  - Runs in master mode (`primary=yes` / `master=yes`) using the `gmysql` (in production) or `gsqlite3` backend.
   - Exposes the PowerDNS HTTP REST API (`/api/v1`) on port `8081` for automated record updates and management by `example-dns.com`.
   - Configured in [`powerdns/primary.conf`](powerdns/primary.conf).
 
@@ -15,6 +15,16 @@ The DNS network is powered by **PowerDNS Authoritative Server**:
   - Runs in slave mode (`slave=yes`) with automatic secondary zone replication (`autosecondary=yes`).
   - Automatically fetches updated zone data from the primary nameserver via AXFR/IXFR.
   - Configured in [`powerdns/secondary.conf`](powerdns/secondary.conf).
+
+---
+
+## Live Production Deployment
+
+For complete details on the live production cluster (IPs, dual-identity setup with `ternis.net`, 4-nameserver quad topology, and Caddy reverse proxy integration), see:
+
+👉 **[Production Deployment Specification](../docs/production-deployment.md)**
+
+---
 
 ## Deployment Options
 
@@ -125,4 +135,3 @@ dig @127.0.0.1 -p 53 example-dns.com ANY
 pdns_control ping
 systemctl status pdns
 ```
-
