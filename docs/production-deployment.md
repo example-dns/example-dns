@@ -144,3 +144,28 @@ curl -I https://example-dns.net
 # 4. Check PowerDNS daemon and zones
 pdnsutil check-all-zones
 ```
+
+---
+
+## 8. Registry-Specific Constraints & DENIC (.de) Compliance
+
+Different registries enforce varying levels of pre-delegation checks before updating nameservers:
+
+### A. Strict Registries (e.g. DENIC for `.de`)
+- **IP Diversity Enforcement**: DENIC mandates that every nameserver listed in a domain delegation must have a **unique IP address**.
+- Because `example-dns.net` and `one.ns.ternis.net` share `77.90.60.110`, and `example-dns.org` and `two.ns.ternis.net` share `94.249.188.145`, entering all four for a `.de` domain triggers DENIC NAST error `107: Insufficient diversity of nameserver's IP addresses`.
+- **Recommendation for `.de` Domains**:
+  - Use the clean `example-dns` pair:
+    ```text
+    NS  example-dns.net
+    NS  example-dns.org
+    ```
+  - Or the clean `ternis.net` pair:
+    ```text
+    NS  one.ns.ternis.net
+    NS  two.ns.ternis.net
+    ```
+  - Both pairs pass DENIC NAST pre-delegation checks with `success: true` and 0 errors.
+
+### B. Generic & Modern Registries (.com, .net, .org, .dev, .io)
+- Standard gTLDs allow multi-nameserver delegations (including quad-NS aliases) without duplicate IP restrictions.
