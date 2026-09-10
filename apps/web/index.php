@@ -35,6 +35,8 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
     <meta name="keywords" content="<?= htmlspecialchars($t['seo_keywords'], ENT_QUOTES, 'UTF-8') ?>">
     <meta name="author" content="ternis.org">
     <meta name="robots" content="index, follow">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Canonical & Alternate Links -->
     <link rel="canonical" href="<?= htmlspecialchars($canonical_url, ENT_QUOTES, 'UTF-8') ?>">
@@ -80,6 +82,7 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
 
     <style>
         :root {
+            color-scheme: light;
             --bg: #ffffff;
             --surface: #f8fafc;
             --surface-elevated: #ffffff;
@@ -100,29 +103,6 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
             --code-border: #1e293b;
             --radius-sm: 6px;
             --radius-md: 10px;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #090d16;
-                --surface: #0f172a;
-                --surface-elevated: #162032;
-                --border: #1e293b;
-                --border-subtle: #162032;
-                --border-hover: #334155;
-                --text: #f8fafc;
-                --text-muted: #94a3b8;
-                --text-subtle: #64748b;
-                --link: #60a5fa;
-                --primary: #f8fafc;
-                --primary-hover: #e2e8f0;
-                --primary-text: #090d16;
-                --primary-light: rgba(59, 130, 246, 0.15);
-                --primary-border: rgba(59, 130, 246, 0.35);
-                --code-bg: #060a12;
-                --code-text: #f1f5f9;
-                --code-border: #1e293b;
-            }
         }
 
         *, *::before, *::after {
