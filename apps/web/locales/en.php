@@ -8,8 +8,7 @@ return [
     'tagline' => 'High-availability authoritative nameservers and resilient DNS infrastructure.',
     'seo_keywords' => 'DNS, PowerDNS, authoritative nameserver, open source, AXFR, DNSSEC, SQLite, MariaDB',
     'project_by' => 'An open-source infrastructure initiative by <a href="https://ternis.org" target="_blank" rel="noopener">ternis.org</a> (powered by <a href="https://ternis.dev" target="_blank" rel="noopener">ternis.dev</a> &amp; <a href="https://ternis.net" target="_blank" rel="noopener">ternis.net</a>).',
-    'badge_status' => 'Authoritative Cluster Active',
-    'badge_open_source' => '100% Open Source · MIT',
+
 
     // Header & Navigation
     'skip_to_content' => 'Skip to main content',

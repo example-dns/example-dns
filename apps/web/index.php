@@ -255,36 +255,6 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
             margin-bottom: 3.25rem;
         }
 
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            color: #059669;
-            background-color: rgba(5, 150, 105, 0.1);
-            border: 1px solid rgba(5, 150, 105, 0.25);
-            border-radius: 9999px;
-            padding: 0.22rem 0.7rem;
-            margin-bottom: 1.25rem;
-        }
-
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.45); }
-            70% { box-shadow: 0 0 0 7px rgba(5, 150, 105, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
-        }
-
-        .pulse-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background-color: #059669;
-            animation: pulseGlow 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
         .hero h1 {
             font-size: clamp(2.1rem, 4.5vw, 2.85rem);
             font-weight: 800;
@@ -563,15 +533,10 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
         <main id="main-content">
             <!-- Hero -->
             <section class="hero">
-                <div class="status-badge fade-in delay-2">
-                    <span class="pulse-dot" aria-hidden="true"></span>
-                    <?= htmlspecialchars($t['badge_status'], ENT_QUOTES, 'UTF-8') ?>
-                </div>
+                <h1 class="fade-in delay-2"><?= htmlspecialchars($t['hero_title'], ENT_QUOTES, 'UTF-8') ?></h1>
+                <p class="hero-desc fade-in delay-3"><?= htmlspecialchars($t['hero_description'], ENT_QUOTES, 'UTF-8') ?></p>
 
-                <h1 class="fade-in delay-3"><?= htmlspecialchars($t['hero_title'], ENT_QUOTES, 'UTF-8') ?></h1>
-                <p class="hero-desc fade-in delay-4"><?= htmlspecialchars($t['hero_description'], ENT_QUOTES, 'UTF-8') ?></p>
-
-                <div class="hero-actions fade-in delay-5">
+                <div class="hero-actions fade-in delay-4">
                     <a href="https://admin.example-dns.com" class="btn btn-primary" target="_blank" rel="noopener">
                         <?= htmlspecialchars($t['cta_admin'], ENT_QUOTES, 'UTF-8') ?> &rarr;
                     </a>
@@ -583,11 +548,11 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
                     </a>
                 </div>
 
-                <p class="hero-attribution fade-in delay-5"><?= $t['project_by'] ?></p>
+                <p class="hero-attribution fade-in delay-4"><?= $t['project_by'] ?></p>
             </section>
 
             <!-- Delegation -->
-            <section class="content-section fade-in delay-6">
+            <section class="content-section fade-in delay-5">
                 <h2 class="section-title"><?= htmlspecialchars($t['delegation_title'], ENT_QUOTES, 'UTF-8') ?></h2>
                 <p class="section-desc"><?= htmlspecialchars($t['delegation_desc'], ENT_QUOTES, 'UTF-8') ?></p>
 
@@ -602,7 +567,7 @@ example-dns.org</code></pre>
             </section>
 
             <!-- Nodes -->
-            <section class="content-section fade-in delay-7">
+            <section class="content-section fade-in delay-6">
                 <h2 class="section-title"><?= htmlspecialchars($t['nodes_title'], ENT_QUOTES, 'UTF-8') ?></h2>
 
                 <div class="nodes-grid">
@@ -628,7 +593,7 @@ example-dns.org</code></pre>
         </main>
 
         <!-- Footer -->
-        <footer class="fade-in delay-8">
+        <footer class="fade-in delay-7">
             <p><?= $t['footer_text'] ?></p>
             <nav class="footer-nav" aria-label="Footer links">
                 <a href="<?= htmlspecialchars($imprint_url, ENT_QUOTES, 'UTF-8') ?>" target="_blank" rel="noopener"><?= htmlspecialchars($t['imprint'], ENT_QUOTES, 'UTF-8') ?></a>
