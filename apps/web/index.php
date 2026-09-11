@@ -91,18 +91,11 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
             --border-hover: #cbd5e1;
             --text: #0f172a;
             --text-muted: #525e75;
-            --text-subtle: #8b98ad;
             --link: #2563eb;
             --primary: #0f172a;
             --primary-hover: #1e293b;
             --primary-text: #ffffff;
-            --primary-light: rgba(37, 99, 235, 0.08);
-            --primary-border: rgba(37, 99, 235, 0.2);
-            --code-bg: #0b1120;
-            --code-text: #f1f5f9;
-            --code-border: #1e293b;
             --radius-sm: 6px;
-            --radius-md: 10px;
         }
 
         *, *::before, *::after {
@@ -118,6 +111,7 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
         }
 
         /* Modern Staggered Load-In Animations */
@@ -142,8 +136,6 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
         .delay-4 { animation-delay: 0.22s; }
         .delay-5 { animation-delay: 0.28s; }
         .delay-6 { animation-delay: 0.34s; }
-        .delay-7 { animation-delay: 0.40s; }
-        .delay-8 { animation-delay: 0.46s; }
 
         .skip-link {
             position: absolute;
@@ -164,65 +156,20 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
         }
 
         .container {
-            max-width: 820px;
+            max-width: 720px;
+            width: 100%;
             margin: 0 auto;
-            padding: 2.25rem 1.5rem 4rem;
+            padding: 2.5rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 3rem;
-            gap: 1rem;
-        }
-
-        /* Pure typographic brand — NO logo forever */
-        .brand {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            transition: opacity 0.15s ease;
-        }
-
-        .brand:hover {
-            opacity: 0.85;
-        }
-
-        .brand a {
-            color: var(--text);
-            text-decoration: none;
-        }
-
-        .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .nav-admin-btn {
-            color: #2563eb;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            padding: 0.28rem 0.68rem;
-            background-color: var(--primary-light);
-            border: 1px solid var(--primary-border);
-            border-radius: var(--radius-sm);
-            text-decoration: none;
-            transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .nav-admin-btn:hover {
-            background-color: var(--primary);
-            color: var(--primary-text);
-            border-color: var(--primary);
-            transform: translateY(-1px);
-        }
-
-        .nav-admin-btn:active {
-            transform: translateY(0);
         }
 
         .lang-nav {
@@ -239,7 +186,7 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
         .lang-nav a {
             text-decoration: none;
             color: var(--text-muted);
-            padding: 0.18rem 0.5rem;
+            padding: 0.2rem 0.55rem;
             border-radius: 4px;
             font-weight: 600;
             transition: all 0.15s ease;
@@ -252,30 +199,32 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
         }
 
         .hero {
-            margin-bottom: 3.25rem;
+            margin: auto 0;
+            padding: 3rem 0;
         }
 
-        .hero h1 {
-            font-size: clamp(2.1rem, 4.5vw, 2.85rem);
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
             font-weight: 800;
             letter-spacing: -0.04em;
-            line-height: 1.14;
+            line-height: 1.1;
             color: var(--text);
             margin-bottom: 1rem;
         }
 
         .hero-desc {
-            font-size: 1.0625rem;
+            font-size: clamp(1.0625rem, 2vw, 1.25rem);
             color: var(--text-muted);
             line-height: 1.6;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
+            max-width: 620px;
         }
 
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
         }
 
         /* Tactical Button Micro-Interactions */
@@ -328,144 +277,23 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
         }
 
         .hero-attribution {
-            font-size: 0.8125rem;
+            font-size: 0.875rem;
             color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .hero-attribution a {
             color: var(--text);
             text-decoration: underline;
+            text-underline-offset: 2px;
         }
 
-        .content-section {
-            margin-bottom: 2.75rem;
-        }
-
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-desc {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        /* Delegation Code Block with tactile copy feedback */
-        .code-box {
-            background-color: var(--code-bg);
-            border: 1px solid var(--code-border);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            position: relative;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .code-box:hover {
-            border-color: rgba(59, 130, 246, 0.4);
-        }
-
-        .code-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.55rem 0.95rem;
-            border-bottom: 1px solid var(--code-border);
-            font-size: 0.75rem;
-            font-family: ui-monospace, "SF Mono", monospace;
-            color: #94a3b8;
-        }
-
-        .copy-btn {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #f8fafc;
-            border-radius: 4px;
-            padding: 0.22rem 0.55rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.15s ease;
-        }
-
-        .copy-btn:hover {
-            background: rgba(255, 255, 255, 0.18);
-            transform: translateY(-1px);
-        }
-
-        .copy-btn:active {
-            transform: translateY(0);
-        }
-
-        .copy-btn.copied {
-            background-color: #059669;
-            border-color: #10b981;
-            color: #ffffff;
-        }
-
-        pre {
-            padding: 0.95rem;
-            font-family: ui-monospace, "SF Mono", monospace;
-            font-size: 0.8125rem;
-            color: var(--code-text);
-            line-height: 1.6;
-            overflow-x: auto;
-        }
-
-        /* Node Cards Micro-Interactions */
-        .nodes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 1rem;
-        }
-
-        .node-card {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 1.15rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-                        border-color 0.2s ease,
-                        box-shadow 0.2s ease;
-        }
-
-        .node-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--border-hover);
-            box-shadow: 0 6px 16px -3px rgba(0, 0, 0, 0.08);
-        }
-
-        .node-role {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            color: var(--text-subtle);
-        }
-
-        .node-host {
-            font-size: 1.0625rem;
-            font-weight: 700;
-            color: var(--text);
-            font-family: ui-monospace, "SF Mono", monospace;
-        }
-
-        .node-desc {
-            font-size: 0.8125rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            font-family: ui-monospace, "SF Mono", monospace;
+        .hero-attribution a:hover {
+            color: var(--link);
         }
 
         footer {
-            padding-top: 2rem;
+            padding-top: 1.75rem;
             border-top: 1px solid var(--border);
             display: flex;
             flex-direction: column;
@@ -477,6 +305,7 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
         footer a {
             color: var(--text);
             text-decoration: underline;
+            text-underline-offset: 2px;
             transition: opacity 0.15s ease;
         }
 
@@ -517,83 +346,34 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
     <div class="container">
         <!-- Header -->
         <header class="fade-in delay-1">
-            <div class="brand">
-                <a href="?locale=<?= urlencode($locale) ?>">example-dns</a>
-            </div>
-
-            <div class="header-nav">
-                <a href="https://admin.example-dns.com" target="_blank" rel="noopener" class="nav-admin-btn"><?= htmlspecialchars($t['nav_admin'], ENT_QUOTES, 'UTF-8') ?> &rarr;</a>
-                <nav class="lang-nav" aria-label="Language selector">
-                    <a href="?locale=en"<?= $locale === 'en' ? ' aria-current="page"' : '' ?>>EN</a>
-                    <a href="?locale=de"<?= $locale === 'de' ? ' aria-current="page"' : '' ?>>DE</a>
-                </nav>
-            </div>
+            <nav class="lang-nav" aria-label="Language selector">
+                <a href="?locale=en"<?= $locale === 'en' ? ' aria-current="page"' : '' ?>>EN</a>
+                <a href="?locale=de"<?= $locale === 'de' ? ' aria-current="page"' : '' ?>>DE</a>
+            </nav>
         </header>
 
-        <main id="main-content">
-            <!-- Hero -->
-            <section class="hero">
-                <h1 class="fade-in delay-2"><?= htmlspecialchars($t['hero_title'], ENT_QUOTES, 'UTF-8') ?></h1>
-                <p class="hero-desc fade-in delay-3"><?= htmlspecialchars($t['hero_description'], ENT_QUOTES, 'UTF-8') ?></p>
+        <!-- Hero -->
+        <main id="main-content" class="hero">
+            <h1 class="hero-title fade-in delay-2"><?= htmlspecialchars($t['hero_title'], ENT_QUOTES, 'UTF-8') ?></h1>
+            <p class="hero-desc fade-in delay-3"><?= htmlspecialchars($t['hero_description'], ENT_QUOTES, 'UTF-8') ?></p>
 
-                <div class="hero-actions fade-in delay-4">
-                    <a href="https://admin.example-dns.com" class="btn btn-primary" target="_blank" rel="noopener">
-                        <?= htmlspecialchars($t['cta_admin'], ENT_QUOTES, 'UTF-8') ?> &rarr;
-                    </a>
-                    <a href="https://github.com/example-dns/example-dns" class="btn btn-secondary" target="_blank" rel="noopener">
-                        <?= htmlspecialchars($t['cta_github'], ENT_QUOTES, 'UTF-8') ?>
-                    </a>
-                    <a href="https://codeberg.org/example-dns/example-dns" class="btn btn-secondary" target="_blank" rel="noopener">
-                        <?= htmlspecialchars($t['cta_codeberg'], ENT_QUOTES, 'UTF-8') ?>
-                    </a>
-                </div>
+            <div class="hero-actions fade-in delay-4">
+                <a href="https://admin.example-dns.com" class="btn btn-primary" target="_blank" rel="noopener">
+                    <?= htmlspecialchars($t['cta_admin'], ENT_QUOTES, 'UTF-8') ?> &rarr;
+                </a>
+                <a href="https://github.com/example-dns/example-dns" class="btn btn-secondary" target="_blank" rel="noopener">
+                    <?= htmlspecialchars($t['cta_github'], ENT_QUOTES, 'UTF-8') ?>
+                </a>
+                <a href="https://codeberg.org/example-dns/example-dns" class="btn btn-secondary" target="_blank" rel="noopener">
+                    <?= htmlspecialchars($t['cta_codeberg'], ENT_QUOTES, 'UTF-8') ?>
+                </a>
+            </div>
 
-                <p class="hero-attribution fade-in delay-4"><?= $t['project_by'] ?></p>
-            </section>
-
-            <!-- Delegation -->
-            <section class="content-section fade-in delay-5">
-                <h2 class="section-title"><?= htmlspecialchars($t['delegation_title'], ENT_QUOTES, 'UTF-8') ?></h2>
-                <p class="section-desc"><?= htmlspecialchars($t['delegation_desc'], ENT_QUOTES, 'UTF-8') ?></p>
-
-                <div class="code-box">
-                    <div class="code-header">
-                        <span>NAMESERVERS</span>
-                        <button type="button" class="copy-btn" id="copy-ns-btn"><?= htmlspecialchars($t['copy_label'], ENT_QUOTES, 'UTF-8') ?></button>
-                    </div>
-                    <pre><code id="ns-code">example-dns.net
-example-dns.org</code></pre>
-                </div>
-            </section>
-
-            <!-- Nodes -->
-            <section class="content-section fade-in delay-6">
-                <h2 class="section-title"><?= htmlspecialchars($t['nodes_title'], ENT_QUOTES, 'UTF-8') ?></h2>
-
-                <div class="nodes-grid">
-                    <article class="node-card">
-                        <span class="node-role"><?= htmlspecialchars($t['node_primary_name'], ENT_QUOTES, 'UTF-8') ?></span>
-                        <span class="node-host"><?= htmlspecialchars($t['node_primary_host'], ENT_QUOTES, 'UTF-8') ?></span>
-                        <span class="node-desc"><?= htmlspecialchars($t['node_primary_desc'], ENT_QUOTES, 'UTF-8') ?></span>
-                    </article>
-
-                    <article class="node-card">
-                        <span class="node-role"><?= htmlspecialchars($t['node_secondary_name'], ENT_QUOTES, 'UTF-8') ?></span>
-                        <span class="node-host"><?= htmlspecialchars($t['node_secondary_host'], ENT_QUOTES, 'UTF-8') ?></span>
-                        <span class="node-desc"><?= htmlspecialchars($t['node_secondary_desc'], ENT_QUOTES, 'UTF-8') ?></span>
-                    </article>
-
-                    <article class="node-card">
-                        <span class="node-role"><?= htmlspecialchars($t['node_web_name'], ENT_QUOTES, 'UTF-8') ?></span>
-                        <span class="node-host"><?= htmlspecialchars($t['node_web_host'], ENT_QUOTES, 'UTF-8') ?></span>
-                        <span class="node-desc"><?= htmlspecialchars($t['node_web_desc'], ENT_QUOTES, 'UTF-8') ?></span>
-                    </article>
-                </div>
-            </section>
+            <p class="hero-attribution fade-in delay-5"><?= $t['project_by'] ?></p>
         </main>
 
         <!-- Footer -->
-        <footer class="fade-in delay-7">
+        <footer class="fade-in delay-6">
             <p><?= $t['footer_text'] ?></p>
             <nav class="footer-nav" aria-label="Footer links">
                 <a href="<?= htmlspecialchars($imprint_url, ENT_QUOTES, 'UTF-8') ?>" target="_blank" rel="noopener"><?= htmlspecialchars($t['imprint'], ENT_QUOTES, 'UTF-8') ?></a>
@@ -604,36 +384,5 @@ example-dns.org</code></pre>
             </nav>
         </footer>
     </div>
-
-    <script>
-    (function () {
-        var copyBtn = document.getElementById('copy-ns-btn');
-        var nsCode = document.getElementById('ns-code');
-        var copiedLabel = <?= json_encode($t['copied_label'], JSON_UNESCAPED_UNICODE) ?>;
-        var copyLabel = <?= json_encode($t['copy_label'], JSON_UNESCAPED_UNICODE) ?>;
-
-        if (copyBtn && nsCode) {
-            copyBtn.addEventListener('click', function () {
-                var text = nsCode.textContent.trim();
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(text);
-                } else {
-                    var ta = document.createElement('textarea');
-                    ta.value = text;
-                    document.body.appendChild(ta);
-                    ta.select();
-                    try { document.execCommand('copy'); } catch (e) {}
-                    document.body.removeChild(ta);
-                }
-                copyBtn.textContent = copiedLabel;
-                copyBtn.classList.add('copied');
-                setTimeout(function () {
-                    copyBtn.textContent = copyLabel;
-                    copyBtn.classList.remove('copied');
-                }, 1600);
-            });
-        }
-    })();
-    </script>
 </body>
 </html>

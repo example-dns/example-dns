@@ -4,13 +4,12 @@ This directory houses the lightweight, minimal PHP-powered web landing page and 
 
 ## Features
 
-- **Minimalist & Zero-Dependency Architecture**: Pure server-side PHP with semantic HTML5, zero CSS frameworks, zero JS build pipelines, and zero runtime dependencies.
+- **Minimalist & Zero-Dependency Architecture**: Pure server-side PHP with semantic HTML5, zero CSS frameworks, zero JavaScript build pipelines, and zero runtime dependencies.
 - **Pure Typographic Identity**: Clean text-only brand identity without brand logos.
+- **Focused Hero-Only Layout**: Streamlined single-viewport presentation highlighting the brand identity and maintainer attribution.
 - **Full Internationalization (i18n)**: English (`en`) and German (`de`) with 1:1 key parity, automatic browser-language detection, and manual switching (`?locale=en`, `?locale=de`).
 - **Responsive & Minimalist Light Mode**: Clean, semantic stylesheet configured exclusively for high-contrast light mode.
-- **Core Nameserver Delegation**: Direct, copyable authoritative nameserver records (`example-dns.net` and `example-dns.org`).
-- **Cluster Node Overview**: Compact summary of primary, secondary, and web nodes with IP specifications.
-- **Direct Admin Portal Link**: Quick access to the administrative dashboard (`https://admin.example-dns.com`).
+- **Direct Action Links**: Quick access to the Admin Portal (`https://admin.example-dns.com`), GitHub, and Codeberg.
 - **SEO & Canonical Links**: Canonical links, `hreflang` tags, and Open Graph metadata.
 - **Legal Compliance**: Direct imprint link to `https://ternis.dev/{locale}/legal/imprint`.
 
