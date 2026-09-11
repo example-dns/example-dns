@@ -14,7 +14,7 @@ return [
 
     // Hero
     'hero_title' => 'example-dns',
-    'hero_description' => 'High-availability authoritative nameservers and resilient DNS infrastructure powered by PowerDNS.',
+    'hero_subtitle' => 'Simple nameservers powered by PowerDNS',
     'cta_admin' => 'Admin Portal',
     'cta_github' => 'GitHub',
     'cta_codeberg' => 'Codeberg',

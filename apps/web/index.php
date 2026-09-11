@@ -212,10 +212,11 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
             margin-bottom: 1rem;
         }
 
-        .hero-desc {
-            font-size: clamp(1.0625rem, 2vw, 1.25rem);
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 2.2vw, 1.35rem);
+            font-weight: 400;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.5;
             margin-bottom: 1.75rem;
             max-width: 620px;
         }
@@ -355,7 +356,7 @@ $canonical_url = "https://example-dns.com/?locale=" . urlencode($locale);
         <!-- Hero -->
         <main id="main-content" class="hero">
             <h1 class="hero-title fade-in delay-2"><?= htmlspecialchars($t['hero_title'], ENT_QUOTES, 'UTF-8') ?></h1>
-            <p class="hero-desc fade-in delay-3"><?= htmlspecialchars($t['hero_description'], ENT_QUOTES, 'UTF-8') ?></p>
+            <h2 class="hero-subtitle fade-in delay-3"><?= htmlspecialchars($t['hero_subtitle'], ENT_QUOTES, 'UTF-8') ?></h2>
 
             <div class="hero-actions fade-in delay-4">
                 <a href="https://admin.example-dns.com" class="btn btn-primary" target="_blank" rel="noopener">
