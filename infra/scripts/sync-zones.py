@@ -148,6 +148,28 @@ def load_zone_file(path: str) -> dict:
     return data
 
 
+def resolve_zones_dir(zones_dir: str) -> str:
+    """
+    Resolve the effective zones directory.
+
+    Auto-detection order (only applied when zones_dir is the sentinel '.'):
+      1. ./zones/   — subdirectory layout  (zones repo with a zones/ folder)
+      2. ./          — flat/root layout     (zone files directly at repo root)
+
+    When the user passes an explicit --zones-dir the value is used as-is.
+    """
+    if zones_dir != ".":
+        return zones_dir
+
+    # Auto-detect: prefer a zones/ subdirectory if it exists and has .yml files
+    candidate = os.path.join(".", "zones")
+    if os.path.isdir(candidate) and glob.glob(os.path.join(candidate, "*.yml")):
+        return candidate
+
+    # Fall back to the current working directory (root-layout repos)
+    return "."
+
+
 def discover_zone_files(zones_dir: str, zone_filter: str | None) -> list[str]:
     """Return sorted list of .yml paths in zones_dir, optionally filtered."""
     pattern = os.path.join(zones_dir, "*.yml")
@@ -471,9 +493,13 @@ def parse_args() -> argparse.Namespace:
 
     parser.add_argument(
         "--zones-dir",
-        default="./zones",
+        default=".",
         metavar="DIR",
-        help="Directory containing .yml zone files (default: ./zones)",
+        help=(
+            "Directory containing .yml zone files. "
+            "Defaults to auto-detect: uses ./zones/ if it exists and contains "
+            ".yml files, otherwise falls back to the current directory (root layout)."
+        ),
     )
     parser.add_argument(
         "--api-url",
@@ -516,6 +542,11 @@ def main() -> int:
     args = parse_args()
 
     # ------------------------------------------------------------------ #
+    # Resolve the effective zones directory (auto-detect if not explicit)
+    # ------------------------------------------------------------------ #
+    zones_dir = resolve_zones_dir(args.zones_dir)
+
+    # ------------------------------------------------------------------ #
     # Validate required arguments
     # ------------------------------------------------------------------ #
     if not args.api_key and not args.dry_run:
@@ -530,9 +561,9 @@ def main() -> int:
         )
         return 1
 
-    if not os.path.isdir(args.zones_dir):
+    if not os.path.isdir(zones_dir):
         print(
-            _color(f"ERROR: zones directory not found: {args.zones_dir}", _RED),
+            _color(f"ERROR: zones directory not found: {zones_dir}", _RED),
             file=sys.stderr,
         )
         return 1
@@ -541,7 +572,7 @@ def main() -> int:
     # Discover zone files
     # ------------------------------------------------------------------ #
     try:
-        zone_files = discover_zone_files(args.zones_dir, args.zone)
+        zone_files = discover_zone_files(zones_dir, args.zone)
     except FileNotFoundError as exc:
         print(_color(f"ERROR: {exc}", _RED), file=sys.stderr)
         return 1
@@ -549,7 +580,7 @@ def main() -> int:
     print(
         _color(
             f"\n{'[DRY RUN] ' if args.dry_run else ''}"
-            f"Syncing {len(zone_files)} zone file(s) → {args.api_url}",
+            f"Syncing {len(zone_files)} zone file(s) from {zones_dir}/ → {args.api_url}",
             _BOLD,
         )
     )

@@ -27,3 +27,5 @@ dist/
 build/
 target/
 bin/
+
+*.pyc
