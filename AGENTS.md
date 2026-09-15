@@ -45,6 +45,9 @@ The ecosystem is partitioned across three core domain names:
 ├── LICENSE                      # MIT License
 ├── README.md                    # Public project overview
 ├── SECURITY.md                  # Security reporting policy
+├── .github/
+│   └── workflows/
+│       └── sync-dns.yml         # GitHub Actions workflow (copy into your zones repo)
 ├── apps/
 │   └── web/                     # example-dns.com PHP web application
 │       ├── index.php            # Main entrypoint & HTML rendering
@@ -54,7 +57,11 @@ The ecosystem is partitioned across three core domain names:
 │       └── README.md            # Web app documentation
 ├── docs/
 │   ├── architecture.md          # Architectural specifications & Mermaid flowcharts
+│   ├── dns-as-code.md           # DNS-as-Code feature documentation
 │   └── mirrors.md               # Git mirror setup instructions
+├── zones/                       # DNS-as-Code zone template (copy/fork into your own repo)
+│   ├── README.md                # Zone file format reference & quick-start guide
+│   └── example-dns.com.yml     # Example zone file demonstrating the YAML format
 └── infra/
     ├── docker-compose.yml       # Complete local/containerized stack with auto-initialized SQLite
     ├── README.md                # Deployment guide (Docker & VPS)
@@ -63,8 +70,20 @@ The ecosystem is partitioned across three core domain names:
     │   ├── secondary.conf       # Slave configuration with autosecondary
     │   └── schema.sql           # SQLite3 database schema for PowerDNS
     └── scripts/
-        └── install-vps.sh       # Zero-touch installer script for Debian/Ubuntu VPS nodes
+        ├── install-vps.sh               # Zero-touch installer script for Debian/Ubuntu VPS nodes
+        ├── sync-zones.py                # DNS-as-Code sync script (PowerDNS REST API)
+        └── sync-zones-requirements.txt  # Python deps: requests, PyYAML
 ```
+
+### DNS-as-Code Pattern
+
+The `zones/` directory is a **template** that users copy or fork into their own dedicated zones repository. Zone state is expressed as YAML files (one per domain). A Python sync script (`infra/scripts/sync-zones.py`) reads those YAMLs and pushes changes to PowerDNS via the REST API. GitHub Actions (`.github/workflows/sync-dns.yml`) and Codeberg / Woodpecker CI auto-trigger the sync on every `git push` to the zones repo.
+
+Key design decisions:
+- **Sync tooling lives here** (main repo); **zone data lives in the user's own repo** (forked from `zones/`).
+- The CI workflow checks out this repo at runtime to get the latest sync script — no copy required.
+- The script performs a **full replace** (PATCH with `REPLACE` changeType) for all desired RRsets, and **deletes** stale RRsets absent from YAML, while preserving DNSSEC-managed types (`NSEC`, `NSEC3`, `RRSIG`, `DNSKEY`, `CDNSKEY`, `CDS`).
+- Full documentation: [`docs/dns-as-code.md`](docs/dns-as-code.md)
 
 ---
 

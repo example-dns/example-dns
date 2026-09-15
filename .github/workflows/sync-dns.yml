@@ -1,0 +1,116 @@
+# ============================================================================
+# .github/workflows/sync-dns.yml
+#
+# NOTE: This file is meant to be COPIED into your own zones repository.
+#       It is NOT used in the main example-dns repo directly.
+#
+# How to use:
+#   1. Fork / copy the zones/ directory from example-dns into your own repo.
+#   2. Copy this file into your zones repo at: .github/workflows/sync-dns.yml
+#   3. Add the following repository secrets:
+#        PDNS_API_URL  → e.g. http://ns1.yourdomain.com:8081
+#        PDNS_API_KEY  → value of api-key in your pdns.conf
+#   4. Push to main or master — the sync runs automatically.
+#
+# Codeberg / Woodpecker CI equivalent is provided at the bottom of this file
+# as a commented-out .woodpecker.yml snippet.
+# ============================================================================
+
+name: Sync DNS Zones
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  # Allow manual trigger from the GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: Sync zones to PowerDNS
+    runs-on: ubuntu-latest
+
+    steps:
+      # ------------------------------------------------------------------ #
+      # 1. Check out the zones repository (this repo)
+      # ------------------------------------------------------------------ #
+      - name: Checkout zones repo
+        uses: actions/checkout@v4
+        with:
+          path: zones-repo
+
+      # ------------------------------------------------------------------ #
+      # 2. Check out the example-dns repo to get the sync script
+      # ------------------------------------------------------------------ #
+      - name: Checkout example-dns tooling
+        uses: actions/checkout@v4
+        with:
+          repository: example-dns/example-dns
+          ref: master
+          path: example-dns-tools
+
+      # ------------------------------------------------------------------ #
+      # 3. Set up Python and install dependencies
+      # ------------------------------------------------------------------ #
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install sync script dependencies
+        run: pip install requests PyYAML
+
+      # ------------------------------------------------------------------ #
+      # 4. Run the zone sync
+      # ------------------------------------------------------------------ #
+      - name: Sync DNS zones
+        run: |
+          python example-dns-tools/infra/scripts/sync-zones.py \
+            --zones-dir zones-repo/zones \
+            --api-url "${{ secrets.PDNS_API_URL }}" \
+            --api-key "${{ secrets.PDNS_API_KEY }}"
+
+
+# ============================================================================
+# CODEBERG / WOODPECKER CI EQUIVALENT
+# ============================================================================
+# Copy the block below (without the leading '#') into .woodpecker.yml
+# at the root of your zones repository.
+#
+# Required Woodpecker secrets (set in repo Settings → Secrets):
+#   PDNS_API_URL
+#   PDNS_API_KEY
+#
+# ---
+#
+# when:
+#   event: push
+#   branch:
+#     - main
+#     - master
+#
+# steps:
+#   - name: checkout-zones
+#     image: alpine/git
+#     commands:
+#       - git clone --depth 1 "$CI_REPO_CLONE_URL" zones-repo
+#
+#   - name: checkout-example-dns-tools
+#     image: alpine/git
+#     commands:
+#       - git clone --depth 1 https://codeberg.org/example-dns/example-dns.git example-dns-tools
+#
+#   - name: sync-dns-zones
+#     image: python:3.11-alpine
+#     secrets:
+#       - PDNS_API_URL
+#       - PDNS_API_KEY
+#     commands:
+#       - pip install --quiet requests PyYAML
+#       - python example-dns-tools/infra/scripts/sync-zones.py
+#           --zones-dir zones-repo/zones
+#           --api-url "$PDNS_API_URL"
+#           --api-key "$PDNS_API_KEY"
+#
+# ============================================================================
