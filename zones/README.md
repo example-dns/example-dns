@@ -30,7 +30,7 @@ your-zones-repo/
 ├── .github/
 │   └── workflows/
 │       └── sync-dns.yml       ← copied from example-dns/.github/workflows/sync-dns.yml
-├── example-dns.com.yml        ← rename/replace with your domain(s)
+├── domainexample.de.yml       ← real live example — rename/copy for your domain(s)
 └── yourdomain.com.yml
 ```
 
@@ -60,7 +60,7 @@ For Codeberg / Woodpecker CI, use the `.woodpecker.yml` snippet (embedded as a c
 
 ## YAML Format
 
-Each zone file must be named `<domain>.yml` (e.g. `example-dns.com.yml`).
+Each zone file must be named `<domain>.yml` (e.g. `domainexample.de.yml`).
 
 ### Top-level fields
 

@@ -1,0 +1,57 @@
+# zones/domainexample.de.yml
+#
+# Live example zone managed via DNS-as-Code.
+# Authoritative nameservers: ns1.example-dns.net / ns2.example-dns.org
+#
+# This file is part of the example-dns project:
+# https://github.com/example-dns/example-dns
+#
+# To use this as a template for your own domain, copy this file,
+# rename it to <yourdomain>.yml, and adjust the values below.
+
+zone: domainexample.de
+ttl_default: 3600
+
+records:
+  # ------------------------------------------------------------------
+  # SOA — Start of Authority
+  # Serial format: YYYYMMDDnn (increment nn on every change)
+  # ------------------------------------------------------------------
+  - name: "@"
+    type: SOA
+    content: "example-dns.net. hostmaster.domainexample.de. 2026091501 10800 3600 604800 3600"
+
+  # ------------------------------------------------------------------
+  # NS — Authoritative nameservers
+  # ------------------------------------------------------------------
+  - name: "@"
+    type: NS
+    ttl: 86400
+    content: "example-dns.net."
+
+  - name: "@"
+    type: NS
+    ttl: 86400
+    content: "example-dns.org."
+
+  # ------------------------------------------------------------------
+  # A / AAAA — Root domain
+  # ------------------------------------------------------------------
+  - name: "@"
+    type: A
+    content: "77.90.60.110"
+
+  - name: "@"
+    type: AAAA
+    content: "2a14:7c0:1002:16c2::"
+
+  # ------------------------------------------------------------------
+  # A / AAAA — www subdomain
+  # ------------------------------------------------------------------
+  - name: "www"
+    type: A
+    content: "77.90.60.110"
+
+  - name: "www"
+    type: AAAA
+    content: "2a14:7c0:1002:16c2::"

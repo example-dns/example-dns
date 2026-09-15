@@ -61,7 +61,7 @@ The ecosystem is partitioned across three core domain names:
 │   └── mirrors.md               # Git mirror setup instructions
 ├── zones/                       # DNS-as-Code zone template (copy/fork into your own repo)
 │   ├── README.md                # Zone file format reference & quick-start guide
-│   └── example-dns.com.yml     # Example zone file demonstrating the YAML format
+│   └── domainexample.de.yml    # Live example zone (domainexample.de → example-dns.net/org)
 └── infra/
     ├── docker-compose.yml       # Complete local/containerized stack with auto-initialized SQLite
     ├── README.md                # Deployment guide (Docker & VPS)
